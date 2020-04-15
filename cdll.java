@@ -51,10 +51,45 @@ public void display(){
 }
 }
 public void reversedisplay(){
-    Node temp=head.prev;
-    while(temp!=head){
+    Node holder=head.prev;
+    Node temp=holder;
+    do{
         System.out.println(temp.data);
-        temp=temp.next;
+        temp=temp.prev;
+
+    }while(temp!=holder);
+    
     }
+    public int getAt(int i)throws Exception{
+        if(i>=this.size || i<0){
+            throw new Exception("Index out of bounds");
+    
+        }else if(this.size==0){
+            throw new Exception("Linked List is empty");
+        }
+            Node node=this.head;
+            for(int j=0;j<i;j++){
+                node=node.next;
+            }
+            return node.data;
+        
+    
+       }
+       public Node getNodeAt(int i)throws Exception{
+        if(i>=this.size || i<0){
+            throw new Exception("Index out of bounds");
+    
+        }else if(this.size==0){
+            throw new Exception("Linked List is empty");
+        }
+            Node node=this.head;
+            for(int j=0;j<i;j++){
+                node=node.next;
+            }
+            return node;
+        
+    
 }
+
+
 }
