@@ -90,6 +90,69 @@ public void reversedisplay(){
         
     
 }
+public void insertAt(int i,int data)throws Exception{
+    if(i>this.size || i<0){
+        throw new Exception("Index out of bounds");
+
+    }else if(this.size==0){
+        throw new Exception("Linked List is empty");
+    }
+    else if(i==0 || i==size){
+        this.insertAtLastorBeforeHead(data);
+    }
+    else{
+    Node node=new Node();
+    node.data=data;
+    
+    Node before=this.getNodeAt(i-1);
+    Node after=before.next;
+    
+    before.next=node;
+    node.prev=before;
+    
+    node.next=after;
+    after.prev=node;
+    
+    this.size++;
+
+}
+
+}
+public void removeHeadNode(){
+    Node temp=head;
+    while(temp.next!=head){
+        temp=temp.next;
+    }
+temp.next=head.next;
+head=head.next;
+head.prev=temp;
+size--;
+}
+public void removeAt(int i)throws Exception{
+    if(i==0){
+        this.removeHeadNode();
+        }
+        else if(i==this.size-1){
+            Node before=getNodeAt(i-1);
+            
+            Node after=getNodeAt(0);
+            before.next=after;
+            this.size--;  
+        }
+    else if(i>this.size && i<0){
+        throw new Exception("Index out of bounds");
+
+    }else if(this.size==0){
+        throw new Exception("Linked List is empty");
+    }else{
+    Node before=getNodeAt(i-1);
+    Node removeit=getNodeAt(i);
+    Node after=removeit.next;
+    before.next=after;
+    this.size--;
+    }
+}
+
 
 
 }
